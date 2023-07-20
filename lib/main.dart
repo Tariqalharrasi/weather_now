@@ -76,8 +76,8 @@ class _HomeState extends State<Home> {
       child: Scaffold(
         backgroundColor: backColor,
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -105,10 +105,10 @@ class _HomeState extends State<Home> {
               ],
             ),
             const SizedBox(
-              height: 300,
+              height: 100,
             ),
             Padding(
-              padding: const EdgeInsets.all(5),
+              padding: const EdgeInsets.all(15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -123,7 +123,7 @@ class _HomeState extends State<Home> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(5),
+              padding: const EdgeInsets.all(15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -141,12 +141,15 @@ class _HomeState extends State<Home> {
                 itemBuilder: (context, index) {
                   final weather = cast[index];
                   final dateTime = weather.date;
-                  return ListTile(
-                    leading: Text(
-                        "${dateTime!.month}/${dateTime.day} ${dateTime.hour}:00"),
-                    title: Text(
-                        "${weather.temperature!.celsius!.toStringAsFixed(1)}°C"),
-                    subtitle: Text("${weather.weatherDescription}"),
+                  return Card(
+                    child: ListTile(
+                      contentPadding: const EdgeInsets.all(5),
+                      leading: Text(
+                          "${dateTime!.month}/${dateTime.day} ${dateTime.hour}:00"),
+                      title: Text(
+                          "${weather.temperature!.celsius!.toStringAsFixed(1)}°C"),
+                      subtitle: Text("${weather.weatherDescription}"),
+                    ),
                   );
                 },
               ),
